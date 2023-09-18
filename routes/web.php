@@ -20,7 +20,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/create', [DashboardController::class, 'create'])->name('dashboard.create');
+        Route::post('/store', [DashboardController::class, 'store'])->name('dashboard.store');
+        Route::get('/edit/{element}', [DashboardController::class, 'edit'])->name('dashboard.edit');
+        Route::put('/update/{element}', [DashboardController::class, 'update'])->name('dashboard.update');
+        Route::delete('/delete/{element}', [DashboardController::class, 'delete'])->name('dashboard.delete');
+    });
 });
 
 

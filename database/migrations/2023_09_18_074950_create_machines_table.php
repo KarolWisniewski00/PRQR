@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('model');
-            $table->string('serial');
+            $table->string('serial')->unique();
             $table->date('udt');
             $table->string('instruction_path');
             $table->string('udt_path');
