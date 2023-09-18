@@ -11,33 +11,64 @@
     <div class="p-2">
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5">
             <div class="md:flex">
-                <div class="md:shrink-0">
-                    <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{asset('photo/1932.jpg')}}" alt="Modern building architecture">
+                <div class="md:shrink-0 flex items-center justify-center">
+                    <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{asset($machine->photo_path)}}" alt="{{asset($machine->photo_path)}}" onerror="this.onerror=null; this.src=`{{ asset('empty.svg') }}`; this.classList.remove('object-cover', 'md:h-full', 'md:w-48')">
                 </div>
                 <div class="p-8">
                     <div class="uppercase tracking-wide text-sm text-orange-500 font-semibold">{{$machine->name}} {{$machine->model}}</div>
                     <p class="my-2 text-slate-500">Numer seryjny: {{$machine->serial}}</p>
-                    <div class="block mt-1 text-lg leading-tight font-medium text-black">Pobieranie</div>
+                    @php
+                    $currentDate = date('Y-m-d');
+                    $udtDate = $machine->udt;
+                    $diff = (strtotime($udtDate) - strtotime($currentDate)) / (60 * 60 * 24 * 30);
+                    $textColorClass = 'text-green-500';
+                    if ($diff >= 0 && $diff < 1) { $textColorClass='text-yellow-500' ; }elseif($diff < 0){$textColorClass='text-red-500' ;} @endphp <p class="my-2 {{$textColorClass}}">Ważność UDT do: {{$machine->udt}}</p>
+                        <div class="block mt-1 text-lg leading-tight font-medium text-black">Pobieranie</div>
 
-                    <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
-                        <a href="{{ asset($machine->instruction_path) }}" download class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
-                            Instrukcja
-                        </a>
-                        <a href="{{ asset('storage/'.$machine->udt_path) }}" download class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
-                            UDT
-                        </a>
-                    </div>
+                        <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
+                            @if($machine->instruction_path == '' || $machine->instruction_path == null)
+                            <button disabled class="disabled:cursor-not-allowed px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                Instrukcja
+                            </button>
+                            @else
+                            <a href="{{ asset($machine->instruction_path) }}" download class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                Instrukcja
+                            </a>
+                            @endif
+                            @if($machine->udt_path == '' || $machine->udt_path == null)
+                            <button disabled class="disabled:cursor-not-allowed px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                UDT
+                            </button>
+                            @else
+                            <a href="{{ asset('storage/'.$machine->udt_path) }}" download class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                UDT
+                            </a>
+                            @endif
+                        </div>
 
-                    <div class="block mt-1 text-lg leading-tight font-medium text-black mt-4">Otwórz w nowej karcie</div>
+                        <div class="block mt-1 text-lg leading-tight font-medium text-black mt-4">Otwórz w nowej karcie</div>
 
-                    <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
-                        <a href="{{ asset($machine->instruction_path) }}" target="_blank" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
-                            Instrukcja
-                        </a>
-                        <a href="{{ asset('storage/'.$machine->udt_path) }}" target="_blank" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
-                            UDT
-                        </a>
-                    </div>
+                        <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
+                            @if($machine->instruction_path == '' || $machine->instruction_path == null)
+                            <button disabled class="disabled:cursor-not-allowed px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                Instrukcja
+                            </button>
+                            @else
+                            <a href="{{ asset($machine->instruction_path) }}" target="_blank" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                Instrukcja
+                            </a>
+                            @endif
+                            @if($machine->udt_path == '' || $machine->udt_path == null)
+                            <button disabled class="disabled:cursor-not-allowed px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                UDT
+                            </button>
+                            @else
+                            <a href="{{ asset('storage/'.$machine->udt_path) }}" target="_blank" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-orange-700 focus:z-10 focus:ring-2 focus:ring-orange-700 focus:text-orange-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-orange-500 dark:focus:text-white">
+                                UDT
+                            </a>
+                            @endif
+
+                        </div>
 
                 </div>
             </div>

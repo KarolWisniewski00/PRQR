@@ -15,17 +15,11 @@ class DashboardController extends Controller
         'magni' => []
     ];
 
-    public function index()
-    {
-        $machines = Machine::get();
-        return view('dashboard', compact('machines'));
-    }
-    public function create()
-    {
-        $dict_machine = $this->dict_machine;
-        return view('create', compact('dict_machine'));
-    }
-    public function store(MachineCreateRequest $request)
+    public $instruction_path;
+    public $photo_path;
+    public $machine;
+    
+    public function prepare_variables($request, $what)
     {
         if ($request->genie) {
             $machine = 'genie';
@@ -56,6 +50,25 @@ class DashboardController extends Controller
             $instruction_path = '';
             $photo_path = '';
         }
+
+        return $$what;
+    }
+
+    public function index()
+    {
+        $machines = Machine::get();
+        return view('dashboard', compact('machines'));
+    }
+    public function create()
+    {
+        $dict_machine = $this->dict_machine;
+        return view('create', compact('dict_machine'));
+    }
+    public function store(MachineCreateRequest $request)
+    {
+        $machine = $this->prepare_variables($request, 'machine');
+        $instruction_path = $this->prepare_variables($request, 'instruction_path');
+        $photo_path = $this->prepare_variables($request, 'photo_path');
 
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $file = $request->file('file');
@@ -92,35 +105,9 @@ class DashboardController extends Controller
 
     public function update(Request $request, Machine $element)
     {
-        if ($request->genie) {
-            $machine = 'genie';
-            switch ($request->genie[0]) {
-                case 'GS-1932':
-                    $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = 'photo/1932.jpg';
-                    break;
-                case 'GS-2632':
-                    $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = '';
-                    break;
-                case 'GS-2646':
-                    $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = '';
-                    break;
-                case 'Z-33':
-                    $instruction_path = '';
-                    $photo_path = '';
-                    break;
-            }
-        } elseif ($request->jlg) {
-            $machine = 'jlg';
-            $instruction_path = '';
-            $photo_path = '';
-        } elseif ($request->magni) {
-            $machine = 'magni';
-            $instruction_path = '';
-            $photo_path = '';
-        }
+        $machine = $this->prepare_variables($request, 'machine');
+        $instruction_path = $this->prepare_variables($request, 'instruction_path');
+        $photo_path = $this->prepare_variables($request, 'photo_path');
 
         $oldFilePath = $element->udt_path;
 
