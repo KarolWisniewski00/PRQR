@@ -72,7 +72,7 @@
                                         </a>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <form action="" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tą maszynę?')">
+                                        <form action="{{route('dashboard.delete', $machine->id)}}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć tą maszynę?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
