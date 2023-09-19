@@ -9,21 +9,21 @@
     </nav>
     <hr>
     <div class="p-2">
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-4">
             <div class="md:flex">
                 <div class="md:shrink-0 flex items-center justify-center">
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{asset($machine->photo_path)}}" alt="{{asset($machine->photo_path)}}" onerror="this.onerror=null; this.src=`{{ asset('empty.svg') }}`; this.classList.remove('object-cover', 'md:h-full', 'md:w-48')">
                 </div>
                 <div class="p-8">
-                    <div class="uppercase tracking-wide text-sm text-orange-500 font-semibold">{{$machine->name}} {{$machine->model}}</div>
-                    <p class="my-2 text-slate-500">Numer seryjny: {{$machine->serial}}</p>
+                    <div class="uppercase tracking-wide text-orange-500 font-medium h3">{{$machine->name}} {{$machine->model}}</div>
+                    <p class="my-2 text-slate-500 h3">Numer seryjny: {{$machine->serial}}</p>
                     @php
                     $currentDate = date('Y-m-d');
                     $udtDate = $machine->udt;
                     $diff = (strtotime($udtDate) - strtotime($currentDate)) / (60 * 60 * 24 * 30);
                     $textColorClass = 'text-green-500';
-                    if ($diff >= 0 && $diff < 1) { $textColorClass='text-yellow-500' ; }elseif($diff < 0){$textColorClass='text-red-500' ;} @endphp <p class="my-2 {{$textColorClass}}">Ważność UDT do: {{$machine->udt}}</p>
-                        <div class="block mt-1 text-lg leading-tight font-medium text-black">Pobieranie</div>
+                    if ($diff >= 0 && $diff < 1) { $textColorClass='text-yellow-500' ; }elseif($diff < 0){$textColorClass='text-red-500' ;} @endphp <p class="my-2 {{$textColorClass}} h3">Ważność UDT do: {{$machine->udt}}</p>
+                        <div class="block mt-2 leading-tight font-medium text-black h3">Pobieranie</div>
 
                         <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
                             @if($machine->instruction_path == '' || $machine->instruction_path == null)
@@ -46,7 +46,7 @@
                             @endif
                         </div>
 
-                        <div class="block mt-1 text-lg leading-tight font-medium text-black mt-4">Otwórz w nowej karcie</div>
+                        <div class="block mt-2 leading-tight font-medium text-black mt-4 h3">Otwórz w nowej karcie</div>
 
                         <div class="inline-flex rounded-md shadow-sm mt-2" role="group">
                             @if($machine->instruction_path == '' || $machine->instruction_path == null)
