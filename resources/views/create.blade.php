@@ -17,7 +17,7 @@
                         <h1 class="mt-8 mb-4 text-2xl font-medium text-gray-900">
                             Tworzenie maszyny
                         </h1>
-                        <a href="{{route('dashboard')}}" type="button" class="mt-8 mb-4 text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-chevron-left me-2"></i>Powrót</span></a>
+                        <a href="{{route('dashboard')}}" class="mt-8 mb-4 text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-chevron-left me-2"></i>Powrót</span></a>
                     </div>
                     <form action="{{route('dashboard.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
