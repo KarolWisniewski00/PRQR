@@ -44,7 +44,7 @@ class DashboardController extends Controller
                     break;
                 case 'GS-4047':
                     $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = 'photo/4247.jpeg';
+                    $photo_path = 'photo/4047.jpeg';
                     break;
                 case '4390-RTOR':
                     $instruction_path = 'instruction/gs-4390-rt.pdf';
