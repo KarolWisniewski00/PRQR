@@ -51,7 +51,7 @@ class DashboardController extends Controller
             $machine = 'magni';
             $instruction_path = '';
             $photo_path = '';
-            switch ($request->genie[0]) {
+            switch ($request->magni[0]) {
                 case 'ES1612E':
                     $photo_path = 'photo/ES1612E.jpg';
                     break;
