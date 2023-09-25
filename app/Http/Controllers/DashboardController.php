@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246','GS-4247', '4390-RTOR', 'Z-33'],
+        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246','GS-4047', '4390-RTOR', 'Z-33'],
         'jlg' => ['E600JP',],
         'magni' => ['ES1612E',]
     ];
@@ -42,7 +42,7 @@ class DashboardController extends Controller
                     $instruction_path = 'instruction/gs-1932.pdf';
                     $photo_path = 'photo/3246.jpg';
                     break;
-                case 'GS-4247':
+                case 'GS-4047':
                     $instruction_path = 'instruction/gs-1932.pdf';
                     $photo_path = 'photo/4247.jpeg';
                     break;
