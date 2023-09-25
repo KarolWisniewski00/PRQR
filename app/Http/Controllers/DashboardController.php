@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'Z-33'],
+        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246', 'Z-33'],
         'jlg' => [],
-        'magni' => []
+        'magni' => ['ES1612E',]
     ];
 
     public $instruction_path;
@@ -23,6 +23,8 @@ class DashboardController extends Controller
     {
         if ($request->genie) {
             $machine = 'genie';
+            $instruction_path = '';
+            $photo_path = '';
             switch ($request->genie[0]) {
                 case 'GS-1932':
                     $instruction_path = 'instruction/gs-1932.pdf';
@@ -30,15 +32,15 @@ class DashboardController extends Controller
                     break;
                 case 'GS-2632':
                     $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = '';
                     break;
                 case 'GS-2646':
                     $instruction_path = 'instruction/gs-1932.pdf';
-                    $photo_path = '';
+                    break;
+                case 'GS-3246':
+                    $instruction_path = 'instruction/gs-1932.pdf';
+                    $photo_path = 'photo/3246.jpg';
                     break;
                 case 'Z-33':
-                    $instruction_path = '';
-                    $photo_path = '';
                     break;
             }
         } elseif ($request->jlg) {
@@ -49,6 +51,11 @@ class DashboardController extends Controller
             $machine = 'magni';
             $instruction_path = '';
             $photo_path = '';
+            switch ($request->genie[0]) {
+                case 'ES1612E':
+                    $photo_path = 'photo/ES1612E.jpg';
+                    break;
+            }
         }
 
         return $$what;
