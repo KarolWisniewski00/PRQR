@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246', 'Z-33'],
-        'jlg' => [],
+        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246','GS-4247', '4390-RTOR', 'Z-33'],
+        'jlg' => ['E600JP',],
         'magni' => ['ES1612E',]
     ];
 
@@ -32,13 +32,23 @@ class DashboardController extends Controller
                     break;
                 case 'GS-2632':
                     $instruction_path = 'instruction/gs-1932.pdf';
+                    $photo_path = 'photo/2632.jpeg';
                     break;
                 case 'GS-2646':
                     $instruction_path = 'instruction/gs-1932.pdf';
+                    $photo_path = 'photo/2646.jpg';
                     break;
                 case 'GS-3246':
                     $instruction_path = 'instruction/gs-1932.pdf';
                     $photo_path = 'photo/3246.jpg';
+                    break;
+                case 'GS-4247':
+                    $instruction_path = 'instruction/gs-1932.pdf';
+                    $photo_path = 'photo/4247.jpeg';
+                    break;
+                case '4390-RTOR':
+                    $instruction_path = 'instruction/gs-4390-rt.pdf';
+                    $photo_path = 'photo/4390.jpeg';
                     break;
                 case 'Z-33':
                     break;
@@ -47,12 +57,19 @@ class DashboardController extends Controller
             $machine = 'jlg';
             $instruction_path = '';
             $photo_path = '';
+            switch ($request->jlg[0]) {
+                case 'E600JP':
+                    $instruction_path = 'instruction/E600JP.pdf';
+                    $photo_path = 'photo/E600JP.jpeg';
+                    break;
+            }
         } elseif ($request->magni) {
             $machine = 'magni';
             $instruction_path = '';
             $photo_path = '';
             switch ($request->magni[0]) {
                 case 'ES1612E':
+                    $instruction_path = 'instruction/ES1612E.pdf';
                     $photo_path = 'photo/ES1612E.jpg';
                     break;
             }
