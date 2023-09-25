@@ -33,4 +33,4 @@ Route::middleware([
 
 Route::get('/error', [IndexController::class, 'error'])->name('error');
 Route::get('/{element}', [IndexController::class, 'index'])->name('index');
-Route::get('/', [IndexController::class, 'default'])->name('index');
+Route::get('/', [IndexController::class, 'default'])->name('default');
