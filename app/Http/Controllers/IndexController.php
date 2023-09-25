@@ -21,4 +21,7 @@ class IndexController extends Controller
     public function error(){
         return view('error');
     }
+    public function default(){
+        return view('default');
+    }
 }
