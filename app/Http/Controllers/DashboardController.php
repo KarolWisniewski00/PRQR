@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2632', 'GS-2646', 'GS-3246','GS-4047', '4390-RTOR', 'Z-33'],
-        'jlg' => ['E600JP',],
+        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR', 'Z-33'],
+        'jlg' => ['E600JP', 'E450AJ',],
         'magni' => ['ES1612E',]
     ];
 
     public $instruction_path;
     public $photo_path;
     public $machine;
-    
+
     public function prepare_variables($request, $what)
     {
         if ($request->genie) {
@@ -29,6 +29,10 @@ class DashboardController extends Controller
                 case 'GS-1932':
                     $instruction_path = 'instruction/gs-1932.pdf';
                     $photo_path = 'photo/1932.jpg';
+                    break;
+                case 'GS-2046 E-Drive':
+                    $instruction_path = 'instruction/gs-1932.pdf';
+                    $photo_path = 'photo/2046.jpeg';
                     break;
                 case 'GS-2632':
                     $instruction_path = 'instruction/gs-1932.pdf';
@@ -62,6 +66,10 @@ class DashboardController extends Controller
                     $instruction_path = 'instruction/E600JP.pdf';
                     $photo_path = 'photo/E600JP.jpeg';
                     break;
+                case 'E450AJ':
+                    $instruction_path = 'instruction/E450AJ.pdf';
+                    $photo_path = 'photo/E450AJ.jpeg';
+                    break;
             }
         } elseif ($request->magni) {
             $machine = 'magni';
@@ -77,7 +85,7 @@ class DashboardController extends Controller
 
         return $$what;
     }
-
+    //25412 gs2046 e-drive, 150 magni?, jlg E450AJ.pdf
     public function index()
     {
         $machines = Machine::get();
