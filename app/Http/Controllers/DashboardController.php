@@ -85,7 +85,7 @@ class DashboardController extends Controller
 
         return $$what;
     }
-    //25412 gs2046 e-drive, 150 magni?, jlg E450AJ.pdf
+
     public function index()
     {
         $machines = Machine::get();
