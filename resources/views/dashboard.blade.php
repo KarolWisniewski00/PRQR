@@ -49,7 +49,7 @@
                             $('#search-input').on("keyup", function() {
                                 // Pobierz wartość pola tekstowego
                                 var query = $(this).val();
-                                var url = $('#url').val();
+                                var url = '{{url("dashboard/search/")}}';
                                 let today = new Date();
 
                                 // Pobierz token CSRF z meta tagu
@@ -178,8 +178,6 @@
                             });
                         });
                     </script>
-
-                    <input type="hidden" value="{{route('dashboard.search')}}" name="url" id="url">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
