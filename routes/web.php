@@ -24,6 +24,7 @@ Route::middleware([
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/create', [DashboardController::class, 'create'])->name('dashboard.create');
         Route::post('/store', [DashboardController::class, 'store'])->name('dashboard.store');
+        Route::post('/search', [DashboardController::class, 'search'])->name('dashboard.search');
         Route::get('/edit/{element}', [DashboardController::class, 'edit'])->name('dashboard.edit');
         Route::put('/update/{element}', [DashboardController::class, 'update'])->name('dashboard.update');
         Route::delete('/delete/{element}', [DashboardController::class, 'delete'])->name('dashboard.delete');
