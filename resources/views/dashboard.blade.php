@@ -15,7 +15,7 @@
                     <x-application-logo class="block h-12 w-auto" />
                     <div class="flex flex-row justify-between">
                         <h1 class="mt-8 mb-4 text-2xl font-medium text-gray-900">
-                            Wszystkie maszyny
+                            Wszystkie maszyny <span>{{count($machines)}}</span>
                         </h1>
                         <a href="{{route('dashboard.create')}}" class="inline-flex items-center justify-center w-10 h-10 mr-2 text-green-100 transition-colors duration-150 bg-green-500 rounded-full focus:shadow-outline hover:bg-green-600">
                             <i class="fa-solid fa-plus"></i>

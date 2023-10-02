@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR','3369-RTOR', '2669-RTOR', 'Z-33'],
-        'jlg' => ['E600JP', 'E450AJ',],
+        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR', '3369-RTOR', '2669-RTOR', 'Z-33'],
+        'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',]
     ];
     //https://katalog.mistrzu.com/
@@ -80,6 +80,10 @@ class DashboardController extends Controller
                 case 'E450AJ':
                     $instruction_path = 'instruction/E450AJ.pdf';
                     $photo_path = 'photo/E450AJ.jpeg';
+                    break;
+                case '4394RT':
+                    $instruction_path = 'instruction/jlg4394rt.pdf';
+                    $photo_path = 'photo/jlg4394.jpeg';
                     break;
             }
         } elseif ($request->magni) {
@@ -203,7 +207,7 @@ class DashboardController extends Controller
     {
         $serial = $request->input('serial');
         $machines = Machine::where('serial', 'LIKE', "%$serial%")->get();
-    
+
 
         return json_encode($machines);
     }
