@@ -13,7 +13,7 @@ class MachineCreateRequest extends FormRequest
             'jlg' => 'nullable|array',
             'magni' => 'nullable|array',
             'serial' => 'required|string|unique:machines,serial',
-            'date' => 'required|date|after_or_equal:tomorrow',
+            'date' => 'required|date',
             'file' => 'required|file|mimes:pdf',
         ];
     }
