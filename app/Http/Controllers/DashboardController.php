@@ -10,13 +10,12 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR', '2669-RTOR', 'Z-33'],
+        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR','3369-RTOR', '2669-RTOR', 'Z-33'],
         'jlg' => ['E600JP', 'E450AJ',],
         'magni' => ['ES1612E',]
     ];
     //https://katalog.mistrzu.com/
     //
-    //142738 1 stiker brakuje - 2 są
     //0529 nie ma udt
     //7522 nowy stiker
     public $instruction_path;
@@ -57,6 +56,10 @@ class DashboardController extends Controller
                 case '4390-RTOR':
                     $instruction_path = 'instruction/gs-4390-rt.pdf';
                     $photo_path = 'photo/4390.jpeg';
+                    break;
+                case '3369-RTOR':
+                    $instruction_path = 'instruction/3369.pdf';
+                    $photo_path = 'photo/3369.jpeg';
                     break;
                 case '2669-RTOR':
                     $instruction_path = 'instruction/gs-2669.pdf';
