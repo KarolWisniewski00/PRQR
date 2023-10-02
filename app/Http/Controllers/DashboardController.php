@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', '4390-RTOR', '3369-RTOR', '2669-RTOR', 'Z-33'],
+        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive', '4390-RTOR', '3369-RTOR', '2669-RTOR', 'Z-33'],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',]
     ];
@@ -52,6 +52,10 @@ class DashboardController extends Controller
                 case 'GS-4047':
                     $instruction_path = 'instruction/gs-1932.pdf';
                     $photo_path = 'photo/4047.jpeg';
+                    break;
+                case 'GS-4655 E-Drive':
+                    $instruction_path = 'instruction/4655.pdf';
+                    $photo_path = 'photo/4655.jpeg';
                     break;
                 case '4390-RTOR':
                     $instruction_path = 'instruction/gs-4390-rt.pdf';
@@ -104,7 +108,9 @@ class DashboardController extends Controller
     public function index()
     {
         $machines = Machine::orderBy('udt', 'asc')->paginate(15);
-        return view('dashboard', compact('machines'));
+        $machines_count = Machine::get();
+        $machines_count = count($machines_count);
+        return view('dashboard', compact('machines', 'machines_count'));
     }
     public function create()
     {
