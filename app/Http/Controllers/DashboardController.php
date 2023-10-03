@@ -12,16 +12,17 @@ class DashboardController extends Controller
     public $dict_machine = [
         'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive',
         '4390-RTOR', '3369-RTOR','3384-RTOR', '2669-RTOR',
-        'Z-33', 'S-85'],
+        'Z-33', 'Z-45', 'Z-51', 'S-85'],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
-        'magni' => ['ES1612E',]
+        'magni' => ['ES1612E',],
+        'boss' => ['X3XSP',]
     ];
     //https://katalog.mistrzu.com/
     //9258 nie ma udt
     //12458 nie ma udt
     //0529 nie ma udt
     //59731 nie ma udt
-    //25509,230410,772343,31263,151840,459731,7431263,38078,5883,2193,030959,30959,0024826,199231102,1495,13129
+    //25509,230410,772343,31263,151840,459731,7431263,38078,5883,2193,030959,30959,0024826,199231102,1495,13129,7024,41671,HA260PX
     //7522 nowy stiker
     public $instruction_path;
     public $photo_path;
@@ -80,6 +81,14 @@ class DashboardController extends Controller
                     break;
                 case 'Z-33':
                     break;
+                case 'Z-45':
+                    $instruction_path = 'instruction/z45.pdf';
+                    $photo_path = 'photo/z45.jpeg';
+                    break;
+                case 'Z-51':
+                    $instruction_path = 'instruction/z45.pdf';
+                    $photo_path = 'photo/z51.jpeg';
+                    break;
                 case 'S-85':
                     $instruction_path = 'instruction/s85.pdf';
                     $photo_path = 'photo/s85.jpg';
@@ -111,6 +120,16 @@ class DashboardController extends Controller
                 case 'ES1612E':
                     $instruction_path = 'instruction/ES1612E.pdf';
                     $photo_path = 'photo/ES1612E.jpg';
+                    break;
+            }
+        } elseif ($request->boss) {
+            $machine = 'boss';
+            $instruction_path = '';
+            $photo_path = '';
+            switch ($request->magni[0]) {
+                case 'X3XSP':
+                    $instruction_path = 'instruction/BossX3.pdf';
+                    $photo_path = 'photo/boss.jpeg';
                     break;
             }
         }
