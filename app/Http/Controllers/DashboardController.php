@@ -11,7 +11,8 @@ class DashboardController extends Controller
 {
     public $dict_machine = [
         'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive',
-         '4390-RTOR', '3369-RTOR','3384-RTOR', '2669-RTOR', 'Z-33'],
+        '4390-RTOR', '3369-RTOR','3384-RTOR', '2669-RTOR',
+        'Z-33', 'S-85'],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',]
     ];
@@ -19,6 +20,8 @@ class DashboardController extends Controller
     //9258 nie ma udt
     //12458 nie ma udt
     //0529 nie ma udt
+    //59731 nie ma udt
+    //25509,230410,772343,31263,151840,459731,7431263,38078,5883,2193,030959,30959,0024826,199231102,1495,13129
     //7522 nowy stiker
     public $instruction_path;
     public $photo_path;
@@ -76,6 +79,10 @@ class DashboardController extends Controller
                     $photo_path = 'photo/2669.jpeg';
                     break;
                 case 'Z-33':
+                    break;
+                case 'S-85':
+                    $instruction_path = 'instruction/s85.pdf';
+                    $photo_path = 'photo/s85.jpg';
                     break;
             }
         } elseif ($request->jlg) {
