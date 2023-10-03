@@ -126,7 +126,7 @@ class DashboardController extends Controller
             $machine = 'boss';
             $instruction_path = '';
             $photo_path = '';
-            switch ($request->magni[0]) {
+            switch ($request->boss[0]) {
                 case 'X3XSP':
                     $instruction_path = 'instruction/BossX3.pdf';
                     $photo_path = 'photo/boss.jpeg';
