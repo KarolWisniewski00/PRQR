@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Storage;
 class DashboardController extends Controller
 {
     public $dict_machine = [
-        'genie' => ['GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive',
-        '4069-RTOR', '4390-RTOR', '3369-RTOR','3384-RTOR', '2669-RTOR', 'GR26J', 'GRC12',
-        'Z-30', 'Z-33','Z-34', 'Z-45', 'Z-51', 'Z-60', 'Z-62', 'Z-80','S-80','S-65','S-65XC', 'S-85', 'S-85XC'],
+        'genie' => [
+            'GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive',
+            '4069-RTOR', '4390-RTOR', '3369-RTOR', '3384-RTOR', '2669-RTOR', 'GR26J', 'GRC12', '5390-RTOR',
+            'Z-30', 'Z-33', 'Z-34', 'Z-45', 'Z-51', 'Z-60', 'Z-62', 'Z-80', 'S-80', 'S-65', 'S-65XC', 'S-85', 'S-85XC'
+        ],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',],
         'boss' => ['X3XSP',],
@@ -135,6 +137,10 @@ class DashboardController extends Controller
                 case 'GRC12':
                     $instruction_path = 'instruction/grc12.pdf';
                     $photo_path = 'photo/grc12.jpeg';
+                    break;
+                case '5390-RTOR':
+                    $instruction_path = 'instruction/5390.pdf';
+                    $photo_path = 'photo/5390.jpeg';
                     break;
             }
         } elseif ($request->jlg) {
