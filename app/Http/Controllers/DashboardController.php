@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public $dict_machine = [
         'genie' => [
             'GS-1932', 'GS-2046 E-Drive', 'GS-2632', 'GS-2646', 'GS-3246', 'GS-4047', 'GS-4655 E-Drive',
-            '4069-RTOR', '4390-RTOR', '3369-RTOR', '3384-RTOR', '2669-RTOR', 'GR26J', 'GRC12', '5390-RTOR',
+            '4069-RTOR', '4390-RTOR', '3369-RTOR', '3384-RTOR', '2669-RTOR', 'GR26J', 'GRC12', '5390-RTOR', 'GS-4046 E-Drive',
             'Z-30', 'Z-33', 'Z-34', 'Z-45', 'Z-51', 'Z-60', 'Z-62', 'Z-80', 'S-80', 'S-65', 'S-65XC', 'S-85', 'S-85XC'
         ],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
@@ -59,6 +59,10 @@ class DashboardController extends Controller
                 case 'GS-4655 E-Drive':
                     $instruction_path = 'instruction/4655.pdf';
                     $photo_path = 'photo/4655.jpeg';
+                    break;
+                case 'GS-4046 E-Drive':
+                    $instruction_path = 'instruction/4046edr.pdf';
+                    $photo_path = 'photo/4046edr.jpeg';
                     break;
                 case '4069-RTOR':
                     $instruction_path = 'instruction/3369.pdf';

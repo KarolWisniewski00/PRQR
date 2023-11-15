@@ -121,6 +121,26 @@
                             @enderror
                         </div>
                         @endif
+                        @if(count($dict_machine['zoomlion']) != 0)
+                        <div class="mb-6">
+                            <h3 class="mb-5 text-lg font-medium text-gray-900">Zoomlion</h3>
+                            <ul class="grid w-full gap-6 md:grid-cols-3">
+                                @foreach($dict_machine['zoomlion'] as $zoomlion)
+                                <li>
+                                    <input {{ in_array($zoomlion, old('zoomlion', [])) ? 'checked' : '' }} name="zoomlion[]" type="radio" id="zoomlion-{{$zoomlion}}" value="{{$zoomlion}}" class="hidden peer">
+                                    <label for="zoomlion-{{$zoomlion}}" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block">
+                                            <div class="w-full text-lg font-semibold">{{$zoomlion}}</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @error('zoomlion')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        @endif
                         <div class="mb-6">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Numer seryjny</label>
                             <input value="{{ old('serial') ? old('serial') : ''}}" name="serial" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Numer seryjny" required>
