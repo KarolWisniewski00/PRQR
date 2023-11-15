@@ -18,7 +18,8 @@ class DashboardController extends Controller
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',],
         'boss' => ['X3XSP',],
-        'nifty' => ['170',]
+        'nifty' => ['170',],
+        'zoomlion' => ['ZS0607ACW-Li',]
     ];
 
     public $instruction_path;
@@ -193,6 +194,16 @@ class DashboardController extends Controller
                 case '170':
                     $instruction_path = 'instruction/nifty170.pdf';
                     $photo_path = 'photo/nifty170.jpeg';
+                    break;
+            }
+        } elseif ($request->zoomlion) {
+            $machine = 'zoomlion';
+            $instruction_path = '';
+            $photo_path = '';
+            switch ($request->zoomlion[0]) {
+                case 'ZS0607ACW-Li':
+                    $instruction_path = 'instruction/0607.pdf';
+                    $photo_path = 'photo/0607.jpeg';
                     break;
             }
         }
