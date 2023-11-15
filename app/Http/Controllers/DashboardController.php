@@ -171,7 +171,7 @@ class DashboardController extends Controller
             $machine = 'nifty';
             $instruction_path = '';
             $photo_path = '';
-            switch ($request->boss[0]) {
+            switch ($request->nifty[0]) {
                 case '170':
                     $instruction_path = 'instruction/nifty170.pdf';
                     $photo_path = 'photo/nifty170.jpeg';
