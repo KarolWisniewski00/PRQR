@@ -117,7 +117,7 @@ class DashboardController extends Controller
                     break;
                 case 'S-85XC':
                     $instruction_path = 'instruction/s85xc.pdf';
-                    $photo_path = 'photo/s85.jpeg';
+                    $photo_path = 'photo/s85.jpg';
                     break;
                 case 'S-65':
                     $instruction_path = 'instruction/s65.pdf';
