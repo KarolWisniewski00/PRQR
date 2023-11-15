@@ -15,7 +15,8 @@ class DashboardController extends Controller
         'Z-30', 'Z-33','Z-34', 'Z-45', 'Z-51', 'Z-60', 'Z-62', 'Z-80','S-80','S-65','S-65XC', 'S-85', 'S-85XC'],
         'jlg' => ['E600JP', 'E450AJ', '4394RT'],
         'magni' => ['ES1612E',],
-        'boss' => ['X3XSP',]
+        'boss' => ['X3XSP',],
+        'nifty' => ['170',]
     ];
 
     public $instruction_path;
@@ -164,6 +165,16 @@ class DashboardController extends Controller
                 case 'X3XSP':
                     $instruction_path = 'instruction/BossX3.pdf';
                     $photo_path = 'photo/boss.jpeg';
+                    break;
+            }
+        } elseif ($request->nifty) {
+            $machine = 'nifty';
+            $instruction_path = '';
+            $photo_path = '';
+            switch ($request->boss[0]) {
+                case '170':
+                    $instruction_path = 'instruction/nifty170.pdf';
+                    $photo_path = 'photo/nifty170.jpeg';
                     break;
             }
         }
