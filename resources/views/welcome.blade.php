@@ -9,8 +9,8 @@
     </nav>
     <hr>
     <div class="p-2">
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-4">
-            <div class="md:flex">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-4 py-2 px-4">
+            <div class="md:flex mb-4">
                 <div class="md:shrink-0 flex items-center justify-center">
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{asset($machine->photo_path)}}" alt="{{asset($machine->photo_path)}}" onerror="this.onerror=null; this.src=`{{ asset('empty.svg') }}`; this.classList.remove('object-cover', 'md:h-full', 'md:w-48')">
                 </div>
@@ -72,6 +72,7 @@
 
                 </div>
             </div>
+            @include('search')
         </div>
     </div>
 

@@ -8,8 +8,10 @@
         </div>
     </nav>
     <hr>
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5 px-4 py-2">
         @include('alerts')
+        @include('search')
+
     </div>
 
     <footer class="bg-white m-4">

@@ -9,13 +9,14 @@
     </nav>
     <hr>
     <div class="p-2">
-        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-4">
-            <div class="md:flex">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-4 px-4 py-2">
+            <div class="md:flex mb-4">
                 <div class="p-8">
                     <div class="uppercase my-2 block mt-2 text-orange-500 h3">Strona główna</div>
                     <div class="my-2 block mt-2 text-slate-500 h3">Wpisz numer maszyny w url np. podnosnikikatowice.pl/123</div>
                 </div>
             </div>
+            @include('search')
         </div>
     </div>
 
